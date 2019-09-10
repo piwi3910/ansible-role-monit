@@ -1,36 +1,29 @@
-language: ruby
-rvm:
-- 2.2
-- 1.9.3
-env:
-- DOCKER_IMAGES=centos:6 ANSIBLE_VERSIONS=1.4.4
-- DOCKER_IMAGES=centos:6 ANSIBLE_VERSIONS=1.9.2
-- DOCKER_IMAGES=centos:6 ANSIBLE_VERSIONS=2.2.1.0
-- DOCKER_IMAGES=centos:7 ANSIBLE_VERSIONS=1.4.4
-- DOCKER_IMAGES=centos:7 ANSIBLE_VERSIONS=1.9.2
-- DOCKER_IMAGES=centos:7 ANSIBLE_VERSIONS=2.2.1.0
-- DOCKER_IMAGES=debian:8 ANSIBLE_VERSIONS=1.4.4
-- DOCKER_IMAGES=debian:8 ANSIBLE_VERSIONS=1.9.2
-- DOCKER_IMAGES=debian:8 ANSIBLE_VERSIONS=2.2.1.0
-- DOCKER_IMAGES=fedora:20 ANSIBLE_VERSIONS=1.4.4
-- DOCKER_IMAGES=fedora:20 ANSIBLE_VERSIONS=1.9.2
-- DOCKER_IMAGES=fedora:20 ANSIBLE_VERSIONS=2.2.1.0
-- DOCKER_IMAGES=fedora:25 ANSIBLE_VERSIONS=1.4.4
-- DOCKER_IMAGES=fedora:25 ANSIBLE_VERSIONS=1.9.2
-- DOCKER_IMAGES=fedora:25 ANSIBLE_VERSIONS=2.2.1.0
-- DOCKER_IMAGES=ubuntu:12.04 ANSIBLE_VERSIONS=1.4.4
-- DOCKER_IMAGES=ubuntu:12.04 ANSIBLE_VERSIONS=1.9.2
-- DOCKER_IMAGES=ubuntu:12.04 ANSIBLE_VERSIONS=2.2.1.0
-- DOCKER_IMAGES=ubuntu:16.04 ANSIBLE_VERSIONS=1.4.4
-- DOCKER_IMAGES=ubuntu:16.04 ANSIBLE_VERSIONS=1.9.2
-- DOCKER_IMAGES=ubuntu:16.04 ANSIBLE_VERSIONS=2.2.1.0
-services:
-- docker
+---
+language: python
+python: "2.7"
+
+# Use the new container infrastructure
+sudo: false
+
+# Install ansible
+addons:
+  apt:
+    packages:
+    - python-pip
+
+install:
+  # Install ansible
+  - pip install ansible
+
+  # Check ansible version
+  - ansible --version
+
+  # Create ansible.cfg with correct roles_path
+  - printf '[defaults]\nroles_path=../' >ansible.cfg
+
 script:
-- wget -O- bit.ly/ansibletest | sh -x
-after_failure:
-- cat role-tester-ansible-master/.kitchen.yml
-- cat role-tester-ansible-master/.kitchen.local.yml
-- cat role-tester-ansible-master/.kitchen/logs/*.log | grep -v '^I, '
+  # Basic role syntax check
+  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
+
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
