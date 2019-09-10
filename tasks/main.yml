@@ -22,7 +22,7 @@
 - include: install_package_names.yml
 
 - name: make log readable
-  sudo: True
+  become: true
   file:
     path: "{{ monit_logfile }}"
     mode: 0644
@@ -48,6 +48,6 @@
   when: monit_include_dirs is not defined
 
 - name: monit conf
-  sudo: True
+  become: true
   template: src=monitrc.j2 dest={{ monit_conf }} owner=root
   notify: restart monit
