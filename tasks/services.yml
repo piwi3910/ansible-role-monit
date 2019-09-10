@@ -1,0 +1,5 @@
+- name: consul monit config
+  become: true
+  template: src=services/consul.j2 dest={{ monit_include_path }}/consul owner=root
+  notify: restart monit
+  when: monit_service_consul == true

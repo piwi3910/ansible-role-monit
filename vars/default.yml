@@ -1,2 +1,3 @@
 ---
 package_names: [ "monit" ]
+monit_include_path: /etc/monit.d

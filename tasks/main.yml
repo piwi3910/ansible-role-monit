@@ -51,3 +51,5 @@
   become: true
   template: src=monitrc.j2 dest={{ monit_conf }} owner=root
   notify: restart monit
+
+- include: services.yml
