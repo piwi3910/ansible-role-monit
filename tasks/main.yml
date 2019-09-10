@@ -7,7 +7,7 @@
 
 - name: set should_run fact
   set_fact:
-    should_run: "{{installed|failed or not monit_should_shortcircuit}}"
+    should_run: "{{ installed|failed or not monit_should_shortcircuit }}"
 
 - include: compat.yml
 
@@ -24,7 +24,7 @@
 - name: make log readable
   sudo: True
   file:
-    path: "{{monit_logfile}}"
+    path: "{{ monit_logfile }}"
     mode: 0644
   when: monit_logfile is defined and monit_logfile != "syslog"
 
@@ -36,18 +36,18 @@
 - name: set_fact for monit_version
   set_fact:
     monit_version: >-
-      {{ 5 if 'This is Monit version 5.' in monit_version_result.stdout else
+      {{  5 if 'This is Monit version 5.' in monit_version_result.stdout else
          4 if 'This is Monit version 4.' in monit_version_result.stdout else
          3 if 'This is Monit version 3.' in monit_version_result.stdout else
-         None }}
+         None  }}
 
 # Workaround https://github.com/ansible/ansible/issues/6756
 - name: Set default monit_include_dirs if not already set
   set_fact:
-    monit_include_dirs: "{{__monit_include_dirs}}"
+    monit_include_dirs: "{{ __monit_include_dirs }}"
   when: monit_include_dirs is not defined
 
 - name: monit conf
   sudo: True
-  template: src=monitrc.j2 dest={{monit_conf}} owner=root
+  template: src=monitrc.j2 dest={{ monit_conf }} owner=root
   notify: restart monit
