@@ -1,7 +1,7 @@
 ---
 - name: restart monit
   service: name=monit state=restarted
-  sudo: yes
+  become: yes
   when: not (is_integration_test is defined and is_integration_test and
       ansible_os_family == "RedHat")
 
