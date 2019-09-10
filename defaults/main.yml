@@ -7,4 +7,10 @@ monit_extra_config: ""
 monit_eventqueue_enable: True
 monit_smtp_server: ""
 
+monit_service_system: false
+monit_service_disk: false
 monit_service_consul: false
+monit_service_mariadb: false
+monit_service_postfix: false
+monit_service_jenkins: false
+monit_service_nexus: false

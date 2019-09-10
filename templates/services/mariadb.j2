@@ -1,0 +1,6 @@
+check process mariadb with pidfile /var/run/mysqld/mysqld.pid
+    start program = "systemctl start mariadb" with timeout 30 seconds
+    stop program  = "systemctl stop mariadb"
+    if cpu usage > 80% for 5 cycles then alert
+  	if failed host 127.0.0.1 port 3306 then restart
+	if 5 restarts within 5 cycles then timeout

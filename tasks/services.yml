@@ -1,5 +1,41 @@
+- name: system monit config
+  become: true
+  template: src=services/system.j2 dest={{ monit_include_path }}/system owner=root
+  notify: restart monit
+  when: monit_service_system == true
+
+- name: disk monit config
+  become: true
+  template: src=services/disk.j2 dest={{ monit_include_path }}/disk owner=root
+  notify: restart monit
+  when: monit_service_disk == true
+
 - name: consul monit config
   become: true
   template: src=services/consul.j2 dest={{ monit_include_path }}/consul owner=root
   notify: restart monit
   when: monit_service_consul == true
+
+- name: mariadb monit config
+  become: true
+  template: src=services/mariadb.j2 dest={{ monit_include_path }}/mariadb owner=root
+  notify: restart monit
+  when: monit_service_mariadb == true
+
+- name: postfix monit config
+  become: true
+  template: src=services/postfix.j2 dest={{ monit_include_path }}/postfix owner=root
+  notify: restart monit
+  when: monit_service_postfix == true
+
+- name: jenkins monit config
+  become: true
+  template: src=services/jenkins.j2 dest={{ monit_include_path }}/jenkins owner=root
+  notify: restart monit
+  when: monit_service_jenkins == true
+
+- name: nexus monit config
+  become: true
+  template: src=services/nexus.j2 dest={{ monit_include_path }}/nexus owner=root
+  notify: restart monit
+  when: monit_service_nexus == true
