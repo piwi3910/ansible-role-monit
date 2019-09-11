@@ -39,3 +39,21 @@
   template: src=services/nexus.j2 dest={{ monit_include_path }}/nexus owner=root
   notify: restart monit
   when: monit_service_nexus
+
+- name: rsyslog monit config
+  become: true
+  template: src=services/rsyslog.j2 dest={{ monit_include_path }}/rsyslog owner=root
+  notify: restart monit
+  when: monit_service_rsyslog
+
+- name: ntpd monit config
+  become: true
+  template: src=services/ntpd.j2 dest={{ monit_include_path }}/ntpd owner=root
+  notify: restart monit
+  when: monit_service_ntpd
+
+- name: loginsight_agent monit config
+  become: true
+  template: src=services/loginsight_agent.j2 dest={{ monit_include_path }}/loginsight_agent owner=root
+  notify: restart monit
+  when: monit_service_loginsight_agent

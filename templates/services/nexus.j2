@@ -1,6 +1,6 @@
-check process jenkins with pidfile /var/run/jenkins.pid
-    start program = "systemctl start jenkins" with timeout 30 seconds
-    stop program  = "systemctl stop jenkins"
+check process nexus with match nexus
+    start program = "systemctl start nexus" with timeout 60 seconds
+    stop program  = "systemctl stop nexus"
     if cpu usage > 80% for 5 cycles then alert
-  	if failed host 127.0.0.1 port 8080 then restart
+  	if failed host 127.0.0.1 port 8081 then restart
 	if 5 restarts within 5 cycles then timeout

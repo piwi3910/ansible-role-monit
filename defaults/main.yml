@@ -14,3 +14,6 @@ monit_service_mariadb: false
 monit_service_postfix: false
 monit_service_jenkins: false
 monit_service_nexus: false
+monit_service_rsyslog: false
+monit_service_ntpd: false
+monit_service_loginsight_agent: false

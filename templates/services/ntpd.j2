@@ -1,0 +1,5 @@
+check process ntpd with pidfile /var/run/ntpd.pid
+    start program = "/bin/systemctl start ntpd" with timeout 30 seconds
+    stop program  = "/bin/systemctl stop ntpd"
+    if cpu usage > 80% for 5 cycles then alert
+  	if 5 restarts within 5 cycles then timeout
