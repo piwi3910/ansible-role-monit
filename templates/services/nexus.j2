@@ -1,6 +1,6 @@
 check process nexus with match nexus
-    start program = "systemctl start nexus" with timeout 60 seconds
-    stop program  = "systemctl stop nexus"
+    start program = "/bin/systemctl start nexus" with timeout 60 seconds
+    stop program  = "/bin/systemctl stop nexus"
     if cpu usage > 80% for 5 cycles then alert
   	if failed host 127.0.0.1 port 8081 then restart
 	if 5 restarts within 5 cycles then timeout
