@@ -1,6 +1,5 @@
-check process mariadb with pidfile /var/run/mysqld/mysqld.pid
-    start program = "/bin/systemctl start mariadb" with timeout 30 seconds
-    stop program  = "/bin/systemctl stop mariadb"
+check process Loginsight_agent with pidfile /var/run/liagent/liagent.pid
+    start program = "/bin/systemctl start liagentd" with timeout 30 seconds
+    stop program  = "/bin/systemctl stop liagentd"
     if cpu usage > 80% for 5 cycles then alert
-  	if failed host 127.0.0.1 port 3306 then restart
 	if 5 restarts within 5 cycles then timeout
