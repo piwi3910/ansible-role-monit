@@ -1,69 +1,59 @@
 - name: system monit config
   become: true
-  template: src=services/system.j2 dest={{ monit_include_path }}/system owner=root
+  template: src=services/system.j2 dest={{ monit_include_path }}/system owner=root force=yes
   notify: restart monit
   when: monit_service_system
-  force: yes
 
 - name: disk monit config
   become: true
-  template: src=services/disk.j2 dest={{ monit_include_path }}/disk owner=root
+  template: src=services/disk.j2 dest={{ monit_include_path }}/disk owner=root force=yes
   notify: restart monit
   when: monit_service_disk
-  force: yes
 
 - name: consul monit config
   become: true
-  template: src=services/consul.j2 dest={{ monit_include_path }}/consul owner=root
+  template: src=services/consul.j2 dest={{ monit_include_path }}/consul owner=root force=yes
   notify: restart monit
   when: monit_service_consul
-  force: yes
 
 - name: mariadb monit config
   become: true
-  template: src=services/mariadb.j2 dest={{ monit_include_path }}/mariadb owner=root
+  template: src=services/mariadb.j2 dest={{ monit_include_path }}/mariadb owner=root force=yes
   notify: restart monit
   when: monit_service_mariadb
-  force: yes
 
 - name: postfix monit config
   become: true
-  template: src=services/postfix.j2 dest={{ monit_include_path }}/postfix owner=root
+  template: src=services/postfix.j2 dest={{ monit_include_path }}/postfix owner=root force=yes
   notify: restart monit
   when: monit_service_postfix
-  force: yes
 
 - name: jenkins monit config
   become: true
-  template: src=services/jenkins.j2 dest={{ monit_include_path }}/jenkins owner=root
+  template: src=services/jenkins.j2 dest={{ monit_include_path }}/jenkins owner=root force=yes
   notify: restart monit
   when: monit_service_jenkins
-  force: yes
 
 - name: nexus monit config
   become: true
-  template: src=services/nexus.j2 dest={{ monit_include_path }}/nexus owner=root
+  template: src=services/nexus.j2 dest={{ monit_include_path }}/nexus owner=root force=yes
   notify: restart monit
   when: monit_service_nexus
-  force: yes
 
 - name: rsyslog monit config
   become: true
-  template: src=services/rsyslog.j2 dest={{ monit_include_path }}/rsyslog owner=root
+  template: src=services/rsyslog.j2 dest={{ monit_include_path }}/rsyslog owner=root force=yes
   notify: restart monit
   when: monit_service_rsyslog
-  force: yes
 
 - name: ntpd monit config
   become: true
-  template: src=services/ntpd.j2 dest={{ monit_include_path }}/ntpd owner=root
+  template: src=services/ntpd.j2 dest={{ monit_include_path }}/ntpd owner=root force=yes
   notify: restart monit
   when: monit_service_ntpd
-  force: yes
 
 - name: loginsight_agent monit config
   become: true
-  template: src=services/loginsight_agent.j2 dest={{ monit_include_path }}/loginsight_agent owner=root
+  template: src=services/loginsight_agent.j2 dest={{ monit_include_path }}/loginsight_agent owner=root force=yes
   notify: restart monit
   when: monit_service_loginsight_agent
-  force: yes
