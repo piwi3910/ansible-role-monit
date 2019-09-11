@@ -6,6 +6,7 @@ monit_eventqueue_slots: 100
 monit_extra_config: ""
 monit_eventqueue_enable: True
 monit_smtp_server: ""
+monit_email: ""
 monit_user: admin
 monit_password: monit
 

@@ -30,6 +30,11 @@ set mailserver
     {{ monit_smtp_server }}
 {% endif %}
 
+{% if monit_email %}
+set alert
+    {{ monit_email }}
+{% endif %}
+
 {{ monit_extra_config }}
 
 {% for include_dir in monit_include_dirs %}
