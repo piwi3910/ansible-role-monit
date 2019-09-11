@@ -1,6 +1,6 @@
-check process consul with pidfile /var/run/mariadb/mariadb.pid
-    start program = "systemctl start mariadb" with timeout 30 seconds
-    stop program  = "systemctl stop mariadb"
+check process jenkins with pidfile /var/run/jenkins.pid
+    start program = "systemctl start jenkins" with timeout 30 seconds
+    stop program  = "systemctl stop jenkins"
     if cpu usage > 80% for 5 cycles then alert
-  	if failed host 127.0.0.1 port 3306 then restart
+  	if failed host 127.0.0.1 port 8080 then restart
 	if 5 restarts within 5 cycles then timeout

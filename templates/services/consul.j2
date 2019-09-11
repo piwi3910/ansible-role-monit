@@ -1,6 +1,6 @@
 check process consul with pidfile /var/run/consul/consul.pid
-    start program = "systemctl start consul" with timeout 30 seconds
-    stop program  = "systemctl stop consul"
+    start program = "/bin/systemctl start consul" with timeout 30 seconds
+    stop program  = "/bin/systemctl stop consul"
     if cpu usage > 80% for 5 cycles then alert
   	if failed host 127.0.0.1 port 8500 then restart
 	if 5 restarts within 5 cycles then timeout
