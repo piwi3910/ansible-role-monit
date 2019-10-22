@@ -9,6 +9,8 @@ monit_smtp_server: ""
 monit_email: ""
 monit_user: admin
 monit_password: monit
+monit_ad_pam: false
+monit_ad_group: monit_admins
 
 monit_service_system: false
 monit_service_disk: false

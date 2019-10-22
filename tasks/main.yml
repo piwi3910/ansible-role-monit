@@ -53,3 +53,4 @@
   notify: restart monit
 
 - include: services.yml
+- include: auth.yml

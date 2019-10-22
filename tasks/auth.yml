@@ -1,0 +1,5 @@
+---
+- name: monit pam config
+  become: true
+  template: src=monit.j2 dest=/etc/pam.d/monit owner=root force=yes
+  when: monit_ad_pam
