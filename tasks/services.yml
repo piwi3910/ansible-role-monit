@@ -20,7 +20,7 @@
   become: true
   template: src=services/vault.j2 dest={{ monit_include_path }}/vault owner=root force=yes
   notify: restart monit
-  when: vault
+  when: monit_service_vault
 
 - name: mariadb monit config
   become: true
