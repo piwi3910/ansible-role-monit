@@ -1,0 +1,6 @@
+check process consul with pidfile /var/run/vault/vault.pid
+    start program = "/bin/systemctl start vault" with timeout 30 seconds
+    stop program  = "/bin/systemctl stop vault"
+    if cpu usage > 80% for 5 cycles then alert
+  	if failed host {{ ansible_default_ipv4.address }} port 8200 then restart
+	if 5 restarts within 5 cycles then timeout

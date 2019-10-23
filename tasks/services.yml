@@ -16,6 +16,12 @@
   notify: restart monit
   when: monit_service_consul
 
+- name: vault monit config
+  become: true
+  template: src=services/vault.j2 dest={{ monit_include_path }}/vault owner=root force=yes
+  notify: restart monit
+  when: vault
+
 - name: mariadb monit config
   become: true
   template: src=services/mariadb.j2 dest={{ monit_include_path }}/mariadb owner=root force=yes
