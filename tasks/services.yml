@@ -63,3 +63,9 @@
   template: src=services/loginsight_agent.j2 dest={{ monit_include_path }}/loginsight_agent owner=root force=yes
   notify: restart monit
   when: monit_service_loginsight_agent
+
+- name: Gitea monit config
+  become: true
+  template: src=services/gitea.j2 dest={{ monit_include_path }}/gitea owner=root force=yes
+  notify: restart monit
+  when: monit_service_gitea

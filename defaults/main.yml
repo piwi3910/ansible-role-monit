@@ -23,4 +23,5 @@ monit_service_nexus: false
 monit_service_rsyslog: false
 monit_service_ntpd: false
 monit_service_loginsight_agent: false
+monit_service_gitea: false
 
