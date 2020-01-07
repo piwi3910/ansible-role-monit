@@ -16,7 +16,7 @@
 - include: epel.yml
   when: >
     ansible_distribution == 'CentOS' and
-    monit_use_epel == 'True'
+    monit_use_epel
 
 - include: Debian.yml
   when: ansible_os_family == 'Debian'
