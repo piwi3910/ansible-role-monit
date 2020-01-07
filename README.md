@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/wtanaka/ansible-role-monit.svg?branch=master)](https://travis-ci.org/wtanaka/ansible-role-monit)
-[![CircleCI](https://circleci.com/gh/wtanaka/ansible-role-monit.svg?style=svg)](https://circleci.com/gh/wtanaka/ansible-role-monit)
+[![Build Status](https://travis-ci.org/piwi3910/ansible-role-monit.svg?branch=master)]
 
-wtanaka.monit
+piwi3910.monit
 =============
 
 Installs monit
@@ -11,7 +10,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - role: wtanaka.monit
+         - role: piwi3910.monit
            # monitor every 30 sec
            monit_daemon: 30
            # lets you run monit commands from command line
@@ -24,7 +23,7 @@ Or you can include just the role, and configure it in host vars file:
     PLAYBOOK
     - hosts: servers
       roles:
-         - wtanaka.monit
+         - piwi3910.monit
 
     HOST_VARS file:
 
@@ -53,7 +52,4 @@ License
 
 GPLv2
 
-Author Information
-------------------
 
-http://wtanaka.com/
