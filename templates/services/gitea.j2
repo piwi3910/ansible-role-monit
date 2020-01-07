@@ -1,4 +1,4 @@
-check process nexus with match gitea
+check process gitea with match gitea
     start program = "/bin/systemctl start gitea" with timeout 60 seconds
     stop program  = "/bin/systemctl stop gitea"
     if cpu usage > 80% for 5 cycles then alert
