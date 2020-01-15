@@ -1,5 +1,6 @@
 ---
 monit_should_shortcircuit: True
+monit_use_epel: True
 monit_daemon: 30
 monit_enable_http: True
 monit_eventqueue_slots: 100
@@ -23,4 +24,5 @@ monit_service_nexus: false
 monit_service_rsyslog: false
 monit_service_ntpd: false
 monit_service_loginsight_agent: false
+monit_service_gitea: false
 
