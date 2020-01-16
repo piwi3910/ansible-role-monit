@@ -1,4 +1,4 @@
-check process consul with pidfile /var/run/vault/vault.pid
+check process vault with pidfile /var/run/vault/vault.pid
     start program = "/bin/systemctl start vault" with timeout 30 seconds
     stop program  = "/bin/systemctl stop vault"
     if cpu usage > 80% for 5 cycles then alert
