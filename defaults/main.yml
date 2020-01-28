@@ -15,6 +15,7 @@ monit_ad_group: monit_admins
 
 monit_service_system: false
 monit_service_disk: false
+monit_service_disk_data: false
 monit_service_consul: false
 monit_service_vault: false
 monit_service_mariadb: false
